@@ -3,42 +3,45 @@
 # CORTX ON VM
 
 1. Setup user
-  sudo su
-  useradd dimas
-  passwd -f -u dimas
-  passwd -d dimas
-  cp -r /home/cc/.ssh /home/dimas
-  chmod 700  /home/dimas/.ssh
-  chmod 644  /home/dimas/.ssh/authorized_keys
-  chown dimas  /home/dimas/.ssh
-  chown dimas  /home/dimas/.ssh/authorized_keys
-  echo "dimas ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/90-cloud-init-users
-  exit
-  exit
+  sudo su  
+  useradd dimas  
+  passwd -f -u dimas  
+  passwd -d dimas  
+  cp -r /home/cc/.ssh /home/dimas  
+  chmod 700  /home/dimas/.ssh  
+  chmod 644  /home/dimas/.ssh/authorized_keys  
+  chown dimas  /home/dimas/.ssh  
+  chown dimas  /home/dimas/.ssh/authorized_keys  
+  echo "dimas ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/90-cloud-init-users  
+  exit  
+  exit  
   
   # Login as dimas
-  sudo su
-  yum update -y
-  yum install zsh -y
-  chsh -s /bin/zsh root
+  sudo su  
+  yum update -y  
+  yum install zsh -y  
+  chsh -s /bin/zsh root  
   
   # Break the Copy here ====
   
-  exit
-  sudo chsh -s /bin/zsh dimas
-  which zsh
-  echo $SHELL
-  sudo yum install wget git vim zsh -y
+  exit  
+  sudo chsh -s /bin/zsh dimas  
+  which zsh  
+  echo $SHELL  
+  sudo yum install wget git vim zsh -y  
   
   # Break the Copy here ====
   
-  printf 'Y' | sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
-  /bin/cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-  sudo sed -i 's|home/dimas:/bin/bash|home/dimas:/bin/zsh|g' /etc/passwd
-  sudo sed -i 's|ZSH_THEME="robbyrussell"|ZSH_THEME="risto"|g' ~/.zshrc
-  zsh
-  exit
-  exit
+  printf 'Y' | sh -c "$(wget -O- https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"  
+  /bin/cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc  
+  sudo sed -i 's|home/dimas:/bin/bash|home/dimas:/bin/zsh|g' /etc/passwd  
+  sudo sed -i 's|ZSH_THEME="robbyrussell"|ZSH_THEME="risto"|g' ~/.zshrc  
+  zsh  
+  exit  
+  exit  
+  
+  sudo mkdir -p /mnt/extra  
+  sudo chown dimas -R /mnt  
 
 
 # RUN CORTX
